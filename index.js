@@ -21,9 +21,6 @@ function setInitialCityAndFetch(cityInput) {
   fetchWeatherData(cityInput);
 }
 
-// Set initial city and fetch data for Hyderabad
-setInitialCityAndFetch('Hyderabad');
-
 // Event listener for input field
 let searchQuery = document.querySelector('.cityInput');
 searchQuery.addEventListener('keypress', setQuery);
@@ -66,3 +63,6 @@ const options = {
   day: 'numeric',
 };
 dateElement.innerText = new Date().toLocaleDateString('en-GB', options);
+
+// Set initial city and fetch data for Hyderabad
+setInitialCityAndFetch('Hyderabad');
