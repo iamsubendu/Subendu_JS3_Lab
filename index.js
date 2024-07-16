@@ -1,7 +1,9 @@
+const wKey = process.env.WEATHER_API_KEY;
+
 // Function to fetch weather data
 function fetchWeatherData(cityInput) {
   fetch(
-    `http://api.weatherapi.com/v1/current.json?key=f5f6d87a59c54dfdb88175120241607&q=${cityInput}&aqi=no`
+    `http://api.weatherapi.com/v1/current.json?key=${wKey}&q=${cityInput}&aqi=no`
   )
     .then((res) => {
       if (!res.ok) {
@@ -11,7 +13,6 @@ function fetchWeatherData(cityInput) {
     })
     .then((res) => displayResults(res))
     .catch((error) => {
-      console.error('Error fetching weather data:', error);
       alert('Please check for spelling mistakes or enter a correct city name.');
     });
 }
@@ -63,3 +64,6 @@ const options = {
   day: 'numeric',
 };
 dateElement.innerText = new Date().toLocaleDateString('en-GB', options);
+
+// Set initial city and fetch data for Hyderabad
+setInitialCityAndFetch('Hyderabad');
