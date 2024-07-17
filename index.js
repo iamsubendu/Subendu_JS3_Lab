@@ -3,7 +3,7 @@ import WEATHER_API_KEY from './apiKey.js';
 console.log(WEATHER_API_KEY);
 function fetchWeatherData(cityInput) {
   fetch(
-    `https://cors-proxy.htmldriven.com/https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${cityInput}&aqi=no`
+    `https://cors-anywhere.herokuapp.com/http://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${cityInput}&aqi=no`
   )
     .then((res) => {
       if (!res.ok) {
