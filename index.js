@@ -1,9 +1,8 @@
-const wKey = process.env.WEATHER_API_KEY;
+import WEATHER_API_KEY from './apiKey.js';
 
-// Function to fetch weather data
 function fetchWeatherData(cityInput) {
   fetch(
-    `http://api.weatherapi.com/v1/current.json?key=${wKey}&q=${cityInput}&aqi=no`
+    `http://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${cityInput}&aqi=no`
   )
     .then((res) => {
       if (!res.ok) {
@@ -17,16 +16,13 @@ function fetchWeatherData(cityInput) {
     });
 }
 
-// Function to set initial city and fetch data
 function setInitialCityAndFetch(cityInput) {
   fetchWeatherData(cityInput);
 }
 
-// Event listener for input field
 let searchQuery = document.querySelector('.cityInput');
 searchQuery.addEventListener('keypress', setQuery);
 
-// Function to handle input field query
 function setQuery(e) {
   if (e.keyCode == 13) {
     getDataFromWeatherApi(searchQuery.value);
