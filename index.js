@@ -1,5 +1,6 @@
 import WEATHER_API_KEY from './apiKey.js';
 
+console.log(WEATHER_API_KEY);
 function fetchWeatherData(cityInput) {
   fetch(
     `https://cors-anywhere.herokuapp.com/https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${cityInput}&aqi=no`
