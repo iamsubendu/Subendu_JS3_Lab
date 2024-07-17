@@ -1,9 +1,8 @@
 import WEATHER_API_KEY from './apiKey.js';
 
-console.log(WEATHER_API_KEY);
 function fetchWeatherData(cityInput) {
   fetch(
-    `https://jsonp.afeld.me/?url=http://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${cityInput}&aqi=no`
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=metric&appid=${WEATHER_API_KEY}`
   )
     .then((res) => {
       if (!res.ok) {
@@ -38,18 +37,18 @@ function getDataFromWeatherApi(cityInput) {
 // Function to display weather results
 function displayResults(weatherData) {
   let city = document.querySelector('#cityName');
-  city.innerText = `${weatherData.location.name}, ${weatherData.location.country}`;
+  city.innerText = `${weatherData.name}, ${weatherData.sys.country}`;
 
   let temp = document.querySelector('#temp');
-  temp.innerText = `${weatherData.current.temp_c}°C`;
+  temp.innerText = `${weatherData.main.temp}°C`;
 
   let weatherDesc = document.querySelector('#weatherDesc');
-  weatherDesc.innerText = `${weatherData.current.condition.text}`;
+  weatherDesc.innerText = `${weatherData.weather[0].main}`;
 
   let tempRange = document.querySelector('#tempRange');
-  const minTemp = Math.floor(weatherData.current.temp_c) - 4;
-  const maxTemp = Math.floor(weatherData.current.temp_c) + 4;
-  tempRange.innerText = `${minTemp}°C / ${maxTemp}°C`;
+  tempRange.innerText = `${Math.round(
+    weatherData.main.temp_min
+  )}°c / ${Math.round(weatherData.main.temp_max)}°c`;
 }
 
 // Set up date display
