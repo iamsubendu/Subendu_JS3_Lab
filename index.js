@@ -12,7 +12,7 @@ function fetchWeatherData(cityInput) {
       return res.json();
     })
     .then((res) => displayResults(res))
-    .catch((error) => {
+    .catch(() => {
       alert('Please check for spelling mistakes or enter a correct city name.');
     });
 }
